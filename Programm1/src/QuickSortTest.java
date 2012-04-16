@@ -2,7 +2,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import assests.FileIntArray;
+import assets.FileIntArray;
 
 public class QuickSortTest {
 

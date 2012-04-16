@@ -1,4 +1,4 @@
-package assests;
+package assets;
 
 import java.io.*;
 
@@ -36,7 +36,7 @@ public class FileIntArray {
 
 				if (einZeile == null)
 					break; // Ende der Datei erreicht
-				System.out.println(einZeile);
+				//System.out.println(einZeile);
 				int j = new Integer(einZeile);
 				A[i] = j;
 			}
