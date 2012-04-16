@@ -1,4 +1,4 @@
-
+//hallo aboud 
 public class QuicksortComparable {
 
 	public static <T> Comparable<T>[] quickSortThisArray(Comparable<T>[] array) {
