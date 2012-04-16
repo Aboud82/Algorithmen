@@ -1,5 +1,5 @@
 /**
- * a class to sort int or Comparable arrays using quicksort algorithm
+ * a class to sort int or Comparable arrays using quicksort algorithm.
  * 
  * @author Martin Fleischer
  * @author Aboud Chamoun
@@ -7,7 +7,7 @@
 public class QuickSort {
 
 	/**
-	 * Sorts the given array and returns the sorted array
+	 * Sorts the given array and returns the sorted array.
 	 * 
 	 * @param array
 	 *            the given array to sort
@@ -19,8 +19,10 @@ public class QuickSort {
 	}
 
 	/**
-	 * Sorts an array starting at fromIndex to toIndex, will be called
-	 * recursively
+	 * Sorts the pivot element of an array to the right position, starting at
+	 * fromIndex to toIndex. After this all elemnts <= pivot will be on the left
+	 * of pivot,all elements >=pivot will be on the right side of pivot.
+	 * Will be called recursively.
 	 * 
 	 * @array the given array to be sorted
 	 * @fromIndex the index of the first element to sort
@@ -77,7 +79,7 @@ public class QuickSort {
 	}
 
 	/**
-	 * Swaps two elements of an array
+	 * Swaps two elements of an array.
 	 * 
 	 * @param array
 	 *            the given array
