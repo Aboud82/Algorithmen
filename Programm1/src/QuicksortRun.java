@@ -1,5 +1,10 @@
 import assets.FileIntArray;
 
+/**
+ * 
+ * @author Martin Fleischer
+ * @author Aboud Chamoun
+ */
 public class QuicksortRun {
 
 	/**

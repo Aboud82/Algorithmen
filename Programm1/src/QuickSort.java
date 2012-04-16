@@ -1,7 +1,5 @@
-import assets.FileIntArray;
-
 /**
- * a class to sort arrays of integers
+ * a class to sort int or Comparable arrays using quicksort algorithm
  * 
  * @author Martin Fleischer
  * @author Aboud Chamoun
@@ -9,11 +7,11 @@ import assets.FileIntArray;
 public class QuickSort {
 
 	/**
-	 * Sorts the main given array and returns the final sorted array.
+	 * Sorts the given array and returns the sorted array
 	 * 
 	 * @param array
-	 *            the given array
-	 * @retrun the sorted finall array
+	 *            the given array to sort
+	 * @return given array, sorted
 	 */
 	public static int[] quickSortThisArray(int[] array) {
 		quicksort(array, 0, array.length - 1);
@@ -21,11 +19,12 @@ public class QuickSort {
 	}
 
 	/**
-	 * Sorts arrays, it will be recursively called.
+	 * Sorts an array starting at fromIndex to toIndex, will be called
+	 * recursively
 	 * 
 	 * @array the given array to be sorted
-	 * @fromIndex the index of the first element of the array
-	 * @toIndex the index of the last element of the array
+	 * @fromIndex the index of the first element to sort
+	 * @toIndex the index of the last element to sort
 	 */
 	private static void quicksort(int[] array, int fromIndex, int toIndex) {
 		int pivot = array[toIndex];
@@ -35,10 +34,7 @@ public class QuickSort {
 			if (array[i] >= pivot) {
 
 				/*
-				 * when a bigger value than pivot is found on the left side of
-				 * the array, start searching the right side of the array
-				 * ,starting with the last element, for a smaller value than
-				 * pivot.
+				 * searching for a bigger value than pivot starting
 				 */
 				while (j > i) {
 					j--;
@@ -48,25 +44,32 @@ public class QuickSort {
 					}
 				}
 
-				// if searching the array from left and right reached one
-				// element.
+				/*
+				 * if searching the array from left and right reached one
+				 * element right position for pivot has been found
+				 */
 				if (i == j) {
 					swap(array, i, toIndex);
 
-					// Checks if there are enough elements to sort on the left
-					// side of the array.
+					/*
+					 * Checks if there are more elements to sort on the left
+					 * side of the right position for pivot
+					 */
 					if (i - 1 > fromIndex) {
 						quicksort(array, fromIndex, i - 1);
 					}
 
-					// Checks if there are enough elements to sort on the right
-					// side of the array.
+					/*
+					 * calls quicksort if there are more elements to sort on the
+					 * right side of the right position for pivot
+					 */
 					if (i + 1 < toIndex) {
 						quicksort(array, i + 1, toIndex);
 					}
 					return;
 				}
 			}
+			// i shouldn't be bigger than j
 			if (i > j) {
 				throw new IllegalStateException("i > j");
 			}
@@ -74,7 +77,7 @@ public class QuickSort {
 	}
 
 	/**
-	 * Swaps two elements of the array.
+	 * Swaps two elements of an array
 	 * 
 	 * @param array
 	 *            the given array
@@ -87,18 +90,6 @@ public class QuickSort {
 		int temp = array[i];
 		array[i] = array[j];
 		array[j] = temp;
-	}
-
-	/**
-	 * Prints the elements of an array
-	 * 
-	 * @param arr
-	 *            the given array
-	 */
-	public static void printArray(int[] arr) {
-		for (int i = 0; i < arr.length; i++) {
-			System.out.println(arr[i]);
-		}
 	}
 
 	/**
@@ -125,13 +116,13 @@ public class QuickSort {
 						break;
 					}
 				}
-				if (foundIndex(j, i)) {
+				if (i == j) {
 					swap(array, i, toIndex);
 
-					if (moreToSortLeft(fromIndex, i)) {
+					if (i - 1 > fromIndex) {
 						quicksort(array, fromIndex, i - 1);
 					}
-					if (moreToSortRight(toIndex, i)) {
+					if (i + 1 < toIndex) {
 						quicksort(array, i + 1, toIndex);
 					}
 					return;
@@ -143,46 +134,11 @@ public class QuickSort {
 		}
 	}
 
-	/**
-	 * 
-	 * @param toIndex
-	 * @param i
-	 * @return
-	 */
-	private static boolean moreToSortRight(int toIndex, int i) {
-		return i + 1 < toIndex;
-	}
-
-	/**
-	 * 
-	 * @param fromIndex
-	 * @param i
-	 * @return
-	 */
-	private static boolean moreToSortLeft(int fromIndex, int i) {
-		return i - 1 > fromIndex;
-	}
-
-	/**
-	 * 
-	 * @param array
-	 * @param j
-	 * @param i
-	 */
+	@SuppressWarnings("unchecked")
 	private static <T> void swap(Comparable<T>[] array, int j, int i) {
-		T temp = (T) array[i];
+		T temp = ((T) array[i]);
 		array[i] = array[j];
 		array[j] = (Comparable<T>) temp;
-	}
-
-	/**
-	 * 
-	 * @param j
-	 * @param i
-	 * @return
-	 */
-	private static boolean foundIndex(int j, int i) {
-		return i == j;
 	}
 
 	/**
@@ -191,29 +147,17 @@ public class QuickSort {
 	 * @param second
 	 * @return
 	 */
+	@SuppressWarnings("unchecked")
 	public static <T> int compareTo(Comparable<T> first, Comparable<T> second) {
-		if (first == null && second == null)
+		if (first == null && second == null) {
 			return 0;
+		}
 		if (first == null) {
 			return Integer.MIN_VALUE;
 		}
 		if (second == null) {
 			return Integer.MAX_VALUE;
 		}
-		return first.compareTo((T) second);
-	}
-
-	/**
-	 * 
-	 * @param Arr
-	 */
-	public static <T> void printArray(Comparable<T>[] Arr) {
-		for (int i = 0; i < Arr.length; i++) {
-			if (Arr[i] == null) {
-				System.out.println(Arr[i]);
-			} else {
-				System.out.println(Arr[i].toString());
-			}
-		}
+		return first.compareTo(((T) second));
 	}
 }

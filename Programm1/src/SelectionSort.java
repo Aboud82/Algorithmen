@@ -1,5 +1,8 @@
-
-
+/**
+ * 
+ * @author Martin Fleischer
+ * @author Aboud Chamoun
+ */
 public class SelectionSort {
 
 	public static int[] selectionSort(int[] arr) {
@@ -16,20 +19,4 @@ public class SelectionSort {
 		}
 		return arr;
 	}
-
-	public static void printArray(int[] Arr) {
-		for (int i = 0; i < Arr.length; i++) {
-			System.out.println(Arr[i]);
-		}
-	}
-
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		int[] Arr = { 1, 4, 2, 7, 5, 9, 8, 0,1, 2, 7, 5 };
-
-		printArray(selectionSort(Arr));
-	}
-
 }
