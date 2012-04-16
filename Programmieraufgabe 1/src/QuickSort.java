@@ -21,8 +21,8 @@ public class QuickSort {
 	/**
 	 * Sorts the pivot element of an array to the right position, starting at
 	 * fromIndex to toIndex. After this all elemnts <= pivot will be on the left
-	 * of pivot,all elements >=pivot will be on the right side of pivot.
-	 * Will be called recursively.
+	 * of pivot,all elements >=pivot will be on the right side of pivot. Will be
+	 * called recursively.
 	 * 
 	 * @array the given array to be sorted
 	 * @fromIndex the index of the first element to sort
@@ -31,15 +31,16 @@ public class QuickSort {
 	private static void quicksort(int[] array, int fromIndex, int toIndex) {
 		int pivot = array[toIndex];
 		int j = toIndex;
-		for (int i = fromIndex; i <= toIndex; i++) {
 
+		// searching for a bigger value than pivot starting at fromIndex
+		for (int i = fromIndex; i <= toIndex; i++) {
 			if (array[i] >= pivot) {
 
-				/*
-				 * searching for a bigger value than pivot starting
-				 */
+				// searching for a smaller value than pivot starting at toIndex
 				while (j > i) {
 					j--;
+
+					// swap values at i and j
 					if (array[j] <= pivot) {
 						swap(array, j, i);
 						break;
@@ -47,15 +48,15 @@ public class QuickSort {
 				}
 
 				/*
-				 * if searching the array from left and right reached one
-				 * element right position for pivot has been found
+				 * if right position for pivot has been found swap pivot and
+				 * element at reached position
 				 */
 				if (i == j) {
 					swap(array, i, toIndex);
 
 					/*
 					 * Checks if there are more elements to sort on the left
-					 * side of the right position for pivot
+					 * side of the right of pivot
 					 */
 					if (i - 1 > fromIndex) {
 						quicksort(array, fromIndex, i - 1);
@@ -63,7 +64,7 @@ public class QuickSort {
 
 					/*
 					 * calls quicksort if there are more elements to sort on the
-					 * right side of the right position for pivot
+					 * right side of the of pivot
 					 */
 					if (i + 1 < toIndex) {
 						quicksort(array, i + 1, toIndex);
@@ -79,7 +80,7 @@ public class QuickSort {
 	}
 
 	/**
-	 * Swaps two elements of an array.
+	 * Swaps two elements of an int array.
 	 * 
 	 * @param array
 	 *            the given array
