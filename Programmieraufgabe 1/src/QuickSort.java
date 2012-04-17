@@ -121,28 +121,49 @@ public class QuickSort {
 			int toIndex) {
 		Comparable<T> pivot = array[toIndex];
 		int j = toIndex;
-		for (int i = fromIndex; i <= toIndex; i++) {
 
+		// searching for a bigger value than pivot starting at fromIndex
+		for (int i = fromIndex; i <= toIndex; i++) {
 			if (compareTo(array[i], pivot) >= 0) {
+
+				// searching for a smaller value than pivot starting at toIndex
 				while (j > i) {
 					j--;
 					if (compareTo(array[j], pivot) <= 0) {
+
+						// swap values at i and j
 						swap(array, j, i);
 						break;
 					}
 				}
+
+				/*
+				 * if right position for pivot has been found swap pivot and
+				 * element at reached position
+				 */
 				if (i == j) {
 					swap(array, i, toIndex);
 
+					/*
+					 * Checks if there are more elements to sort on the left
+					 * side of the right of pivot
+					 */
 					if (i - 1 > fromIndex) {
 						quicksort(array, fromIndex, i - 1);
 					}
+
+					/*
+					 * calls quicksort if there are more elements to sort on the
+					 * right side of the of pivot
+					 */
 					if (i + 1 < toIndex) {
 						quicksort(array, i + 1, toIndex);
 					}
 					return;
 				}
 			}
+
+			// i shouldn't be bigger than j
 			if (i > j) {
 				throw new IllegalStateException("i > j");
 			}
