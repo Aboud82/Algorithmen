@@ -1,5 +1,5 @@
 /**
- * a class to sort int or Comparable arrays using quicksort algorithm.
+ * A class to sort int or Comparable arrays using quicksort algorithm.
  * 
  * @author Martin Fleischer
  * @author Aboud Chamoun
@@ -11,7 +11,7 @@ public class QuickSort {
 	 * 
 	 * @param array
 	 *            the given array to sort
-	 * @return given array, sorted
+	 * @return given array sorted
 	 */
 	public static int[] quickSortThisArray(int[] array) {
 		quicksort(array, 0, array.length - 1);
@@ -96,15 +96,27 @@ public class QuickSort {
 	}
 
 	/**
+	 * Sorts the given array and returns the sorted array.
 	 * 
 	 * @param array
-	 * @return
+	 *            the given array to sort
+	 * @return given array sorted
 	 */
 	public static <T> Comparable<T>[] quickSortThisArray(Comparable<T>[] array) {
 		quicksort(array, 0, array.length - 1);
 		return array;
 	}
 
+	/**
+	 * Sorts the pivot element of an array to the right position, starting at
+	 * fromIndex to toIndex. After this all elemnts <= pivot will be on the left
+	 * of pivot,all elements >=pivot will be on the right side of pivot. Will be
+	 * called recursively.
+	 * 
+	 * @array the given array to be sorted
+	 * @fromIndex the index of the first element to sort
+	 * @toIndex the index of the last element to sort
+	 */
 	private static <T> void quicksort(Comparable<T>[] array, int fromIndex,
 			int toIndex) {
 		Comparable<T> pivot = array[toIndex];
@@ -137,6 +149,16 @@ public class QuickSort {
 		}
 	}
 
+	/**
+	 * Swaps two elements of an array of objects implementing Comparable.
+	 * 
+	 * @param array
+	 *            the given array
+	 * @param j
+	 *            the index of one of the elements of the array
+	 * @param i
+	 *            the index of another element of the array
+	 */
 	@SuppressWarnings("unchecked")
 	private static <T> void swap(Comparable<T>[] array, int j, int i) {
 		T temp = ((T) array[i]);
@@ -147,8 +169,11 @@ public class QuickSort {
 	/**
 	 * 
 	 * @param first
+	 *            Comparable object to compareTo second
 	 * @param second
-	 * @return
+	 *            Comparable object to compareTo first
+	 * @return int > 0 if first > second, int == 0 if first equals second int <
+	 *         0 if first < second
 	 */
 	@SuppressWarnings("unchecked")
 	public static <T> int compareTo(Comparable<T> first, Comparable<T> second) {

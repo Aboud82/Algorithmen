@@ -17,15 +17,17 @@ public class Utils {
 	}
 
 	/**
+	 * Prints each elements of an Comparable[] on a line
 	 * 
-	 * @param Arr
+	 * @param arr
+	 *            the given array
 	 */
-	public static <T> void printArray(Comparable<T>[] Arr) {
-		for (int i = 0; i < Arr.length; i++) {
-			if (Arr[i] == null) {
-				System.out.println(Arr[i]);
+	public static <T> void printArray(Comparable<T>[] arr) {
+		for (int i = 0; i < arr.length; i++) {
+			if (arr[i] == null) {
+				System.out.println(arr[i]);
 			} else {
-				System.out.println(Arr[i].toString());
+				System.out.println(arr[i].toString());
 			}
 		}
 	}
