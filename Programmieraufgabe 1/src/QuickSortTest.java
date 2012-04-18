@@ -4,6 +4,13 @@ import org.junit.Test;
 
 import assets.FileIntArray;
 
+/**
+ * 
+ * @author Aboud Chamoun
+ * @author Martin Fleischer
+ * @author Johannis Dirr
+ *
+ */
 public class QuickSortTest {
 
 	public int[] readArray(String dat) {
