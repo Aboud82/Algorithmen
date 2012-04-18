@@ -6,6 +6,7 @@ import assets.FileIntArray;
  * 
  * @author Martin Fleischer
  * @author Aboud Chamoun
+ * @author Johannis Dirr
  */
 public class QuicksortRun {
 
