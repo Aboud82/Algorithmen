@@ -3,6 +3,7 @@
  * 
  * @author Martin Fleischer
  * @author Aboud Chamoun
+ * @author Johannis Dirr
  */
 public class SelectionSort {
 
