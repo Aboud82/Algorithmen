@@ -11,7 +11,7 @@ public class SelectionSort {
 
 			for (int j = i + 1; j < arr.length; j++) {
 
-				if ((arr[j] < arr[i]) && (arr[j] < smallestNumber)) {
+				if (arr[j] < smallestNumber) {
 					smallestNumber = arr[j];
 					index_smallestNumber = j;
 				}
