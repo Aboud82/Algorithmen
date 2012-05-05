@@ -67,7 +67,7 @@ public class BreadthFirstSearch {
 		return false;
 	}
 
-	public static Graph<Vertex, Edge<Vertex>> getGraphs(String dat) {
+	public static Graph<Vertex, Edge<Vertex>> getGraph(String dat) {
 
 		return GraphLesen.FileToWeightedGraph(dat, true);
 	}
