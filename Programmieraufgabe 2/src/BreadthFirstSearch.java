@@ -1,5 +1,6 @@
 import graph.Edge;
 import graph.Graph;
+import graph.GraphLesen;
 import graph.Vertex;
 
 import java.util.ArrayList;
@@ -65,4 +66,10 @@ public class BreadthFirstSearch {
 		// TODO
 		return false;
 	}
+
+	public static Graph<Vertex, Edge<Vertex>> getGraphs(String dat) {
+
+		return GraphLesen.FileToWeightedGraph(dat, true);
+	}
+
 }
