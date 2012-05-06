@@ -92,14 +92,14 @@ public class BreadthFirst<V extends Vertex, E extends Edge<V>> {
 			dequeue();
 
 			if (neighboursOfFirstVertexInQueue.size() != 0) {
-				for (Vertex v : neighboursOfFirstVertexInQueue) {
+				for (Vertex neighbour : neighboursOfFirstVertexInQueue) {
 
-					int neighbourVertexID = v.getId();
+					int neighbourVertexID = neighbour.getId();
 					String colorOfNode = (String) verticesMap.get(
 							neighbourVertexID).get(0);
 
 					int weightOfEdge = calculateWeightOfWay(firstVertexInQueue,
-							v);
+							neighbour);
 
 					if (colorOfNode.equals("white")) {
 
@@ -108,7 +108,7 @@ public class BreadthFirst<V extends Vertex, E extends Edge<V>> {
 								new ArrayList(Arrays.asList("gray",
 										weightOfEdge, firstVertexInQueue)));
 
-						enqueue(v);
+						enqueue(neighbour);
 					}
 				}
 
