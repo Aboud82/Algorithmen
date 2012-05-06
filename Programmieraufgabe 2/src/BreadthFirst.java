@@ -33,7 +33,7 @@ public class BreadthFirst<V extends Vertex, E extends Edge<V>> {
 	 */
 	private static HashMap<Integer, ArrayList> verticesMap = new HashMap<Integer, ArrayList>();
 
-	static ArrayList<Vertex> vertices;
+
 
 	// Arraylist to perform the Bread first search.
 	private static ArrayList<Vertex> queue = new ArrayList<Vertex>();
@@ -41,7 +41,7 @@ public class BreadthFirst<V extends Vertex, E extends Edge<V>> {
 	// Method to read the dat file and make a Graph.
 	static private void getGraph() {
 		graph = GraphLesen.FileToGraph("src/graphBeispiele/graph8.txt", true);
-		
+
 	}
 
 	/*
@@ -49,7 +49,7 @@ public class BreadthFirst<V extends Vertex, E extends Edge<V>> {
 	 * the breadth first search.
 	 */
 	private static void fillThemHashmap() {
-		vertices = (ArrayList<Vertex>) graph.getVertices();
+		 ArrayList<Vertex> vertices = (ArrayList<Vertex>) graph.getVertices();
 
 		ArrayList initialPropertiers = new ArrayList(Arrays.asList("white", 0,
 				"none"));
@@ -61,19 +61,20 @@ public class BreadthFirst<V extends Vertex, E extends Edge<V>> {
 
 	/*
 	 * Methode to initilize the Breadth first search by setting the start point
-	 * to search. by default we took the node on the first index of the
-	 * ArrayList vertices
+	 * to search.
+	 * 
+	 * @param StartVertexID sets the start point's id of the search.
 	 */
 
-	private static void initilizeBreadFirstSearch() {
+	private static void initilizeBreadFirstSearch(int startVertexID) {
 
-		Vertex firstNode = vertices.get(0);
-		int firstNodeID = firstNode.getId();
-		verticesMap.put(firstNodeID,
-				new ArrayList(Arrays.asList("gray", 0, "none")));
+		Vertex startNode = graph.getVertex(startVertexID);
 
-		// appends the vertex to the queue.
-		queue.add((Vertex) graph.getVertex(firstNodeID));
+		verticesMap.put(startVertexID,
+				new ArrayList(Arrays.asList("gray", 0, "start point")));
+
+		// appends the start vertex to the queue.
+		queue.add(startNode);
 
 	}
 
@@ -97,8 +98,8 @@ public class BreadthFirst<V extends Vertex, E extends Edge<V>> {
 					String colorOfNode = (String) verticesMap.get(
 							neighbourVertexID).get(0);
 
-					int weightOfEdge = calculateWeightOfWay(
-							firstVertexInQueue, v);
+					int weightOfEdge = calculateWeightOfWay(firstVertexInQueue,
+							v);
 
 					if (colorOfNode.equals("white")) {
 
@@ -118,18 +119,18 @@ public class BreadthFirst<V extends Vertex, E extends Edge<V>> {
 	}
 
 	/*
-	 * Methode to calculate a weight for a way to the start point , it can be one edge
-	 * or a couple of edges
+	 * Methode to calculate a weight for a way to the start point , it can be
+	 * one edge or a couple of edges
 	 */
 	private static int calculateWeightOfWay(Vertex firstVertex,
 			Vertex secondVertex) {
 
-		int currentWeight = (Integer) verticesMap.get(
-				firstVertex.getId()).get(1);
+		int currentWeight = (Integer) verticesMap.get(firstVertex.getId()).get(
+				1);
 
 		ArrayList<Edge<Vertex>> edgesOfFirstVertex = (ArrayList<Edge<Vertex>>) graph
 				.getIncidentEdges(firstVertex.getId());
-		
+
 		for (Edge<Vertex> e : edgesOfFirstVertex) {
 			if (e.getVertexB().getId() == secondVertex.getId()) {
 				int edgeWeightBetweenFirstandSecond = e.getWeight();
@@ -160,7 +161,7 @@ public class BreadthFirst<V extends Vertex, E extends Edge<V>> {
 
 		getGraph();
 		fillThemHashmap();
-        initilizeBreadFirstSearch();
+		initilizeBreadFirstSearch(5);
 		performBreadthFirstSearch();
 		displayConclusion();
 
@@ -171,9 +172,9 @@ public class BreadthFirst<V extends Vertex, E extends Edge<V>> {
 	 */
 	private static void displayConclusion() {
 		System.out.println(verticesMap.keySet().toString());
-		
+
 		System.out.println("order of values:   color, weight ,predecessor");
-		System.out.println("values of node index 1 :" + verticesMap.get(0));
+		System.out.println("values of node index 0 :" + verticesMap.get(0));
 		System.out.println("values of node index 1 :" + verticesMap.get(1));
 		System.out.println("values of node index 2 :" + verticesMap.get(2));
 		System.out.println("values of node index 3 :" + verticesMap.get(3));
