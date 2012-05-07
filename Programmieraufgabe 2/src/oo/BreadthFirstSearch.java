@@ -122,6 +122,13 @@ public class BreadthFirstSearch {
 		// end of path
 		Vertex goalVertex = graph.getVertex(vertexIndex2);
 		Vertex vertex = goalVertex;
+		int goalVertexID = goalVertex.getId();
+
+		// if there is no path between vertices
+		if (bsfTree.getBsfNode(goalVertexID).getCol() == Color.WHITE) {
+			printVerticesPath(graph, vertexIndex1, vertexIndex2, null);
+			return null;
+		}
 
 		// creating the vertices path
 		VerticesPath path = new VerticesPath();
@@ -130,10 +137,6 @@ public class BreadthFirstSearch {
 		// while first vertex has not been reached
 		while (true) {
 			int vertexID = vertex.getId();
-			if (bsfTree.getBsfNode(vertexID).getCol() == Color.WHITE) {
-				path = null;
-				break;
-			}
 			Vertex pred = bsfTree.getBsfNode(vertexID).getPred();
 
 			// if has first vertex been reached

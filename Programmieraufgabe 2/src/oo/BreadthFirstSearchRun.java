@@ -30,7 +30,7 @@ public class BreadthFirstSearchRun {
 		System.out.println(BreadthFirstSearch.breadthFirstSearch(5, graph8Directed).toString());
 		
 		BreadthFirstSearch.getShortestDistancesFor(graph8Directed, 5);
-		BreadthFirstSearch.getShortestPathBetween(graph8Directed, 5, 1);
+		BreadthFirstSearch.getShortestPathBetween(graph8Directed, 5, 7);
 		
 	}
 
