@@ -1,4 +1,5 @@
 package oo;
+
 import graph.Edge;
 import graph.Graph;
 import graph.Vertex;
@@ -102,7 +103,7 @@ public class BreadthFirstSearch {
 	 * @param vertexIndex2
 	 *            index of goal index
 	 * @return VerticesPath between vertex at vertexIndex1 and vertex at
-	 *         vertexIndex2
+	 *         vertexIndex2, null if there is no path
 	 */
 	public static VerticesPath getShortestPathBetween(
 			Graph<Vertex, Edge<Vertex>> graph, int vertexIndex1,
@@ -129,6 +130,10 @@ public class BreadthFirstSearch {
 		// while first vertex has not been reached
 		while (true) {
 			int vertexID = vertex.getId();
+			if (bsfTree.getBsfNode(vertexID).getCol() == Color.WHITE) {
+				path = null;
+				break;
+			}
 			Vertex pred = bsfTree.getBsfNode(vertexID).getPred();
 
 			// if has first vertex been reached
@@ -162,9 +167,17 @@ public class BreadthFirstSearch {
 	 */
 	private static void printVerticesPath(Graph<Vertex, Edge<Vertex>> graph,
 			int vertexIndex1, int vertexIndex2, VerticesPath path) {
-		System.out.print("Path between vertex" + graph.getVertex(vertexIndex1)
-				+ " and vertex" + graph.getVertex(vertexIndex2) + " : ");
-		path.printVerticesPath();
+		// if there is no path between vertices
+		if (path == null) {
+			System.out.println("No path between vertex"
+					+ graph.getVertex(vertexIndex1) + " and vertex"
+					+ graph.getVertex(vertexIndex2));
+		} else {
+			System.out.print("Path between vertex"
+					+ graph.getVertex(vertexIndex1) + " and vertex"
+					+ graph.getVertex(vertexIndex2) + " : ");
+			path.printVerticesPath();
+		}
 	}
 
 	/**

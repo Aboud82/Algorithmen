@@ -1,4 +1,5 @@
 package singlefile;
+
 import graph.Edge;
 import graph.Graph;
 import graph.GraphLesen;
@@ -34,8 +35,6 @@ public class BreadthFirst<V extends Vertex, E extends Edge<V>> {
 	 */
 	private static HashMap<Integer, ArrayList> verticesMap = new HashMap<Integer, ArrayList>();
 
-
-
 	// Arraylist to perform the Bread first search.
 	private static ArrayList<Vertex> queue = new ArrayList<Vertex>();
 
@@ -50,7 +49,7 @@ public class BreadthFirst<V extends Vertex, E extends Edge<V>> {
 	 * the breadth first search.
 	 */
 	private static void fillThemHashmap() {
-		 ArrayList<Vertex> vertices = (ArrayList<Vertex>) graph.getVertices();
+		ArrayList<Vertex> vertices = (ArrayList<Vertex>) graph.getVertices();
 
 		ArrayList initialPropertiers = new ArrayList(Arrays.asList("white", 0,
 				"none"));
