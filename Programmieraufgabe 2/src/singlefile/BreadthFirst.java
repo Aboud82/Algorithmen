@@ -1,3 +1,4 @@
+package singlefile;
 import graph.Edge;
 import graph.Graph;
 import graph.GraphLesen;
