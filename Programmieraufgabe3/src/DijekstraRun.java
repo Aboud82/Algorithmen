@@ -9,6 +9,15 @@ import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+/**
+ * this class runs the Dijekstra algorithem.
+ * 
+ * 
+ * @author Martin Fleicher
+ * @author Aboud Chamoun
+ * @author Johannis Dirr
+ * 
+ */
 public class DijekstraRun {
 
 	/**
@@ -16,6 +25,14 @@ public class DijekstraRun {
 	 * @param args
 	 */
 
+	/**
+	 * creates and shows the filechooser, loads the chosen graph
+	 * 
+	 * @param graphDirection
+	 *            pass true if graph should be directed
+	 * 
+	 * 
+	 */
 	private static Graph<Vertex, Edge<Vertex>> loadGraph(boolean graphDirection) {
 		// creating JFileChooser to select graph
 		JFileChooser chooser = new JFileChooser("./src/graphenExamples/");
@@ -41,29 +58,30 @@ public class DijekstraRun {
 
 	}
 
+	/**
+	 * finds the shortest way between two vertices
+	 * 
+	 * @param startVertexID
+	 *            the start vertice
+	 * @param destinationVertexID
+	 *            the end vertice
+	 * @param isDirected
+	 *            pass true if graph should be directed
+	 */
 	private static void findWaysBetweenTheTwoVertices(int startVertexID,
 			int destinationVertexID, boolean isDirected) {
-		
-		Graph<Vertex, Edge<Vertex>> graph = loadGraph(isDirected);
-		Dijekstra.initializeDijekstra(graph, startVertexID, destinationVertexID);
-		
 
-		// print BFS result
-		// printBSF(graph, vertexIndex, goalVertexIndex);
+		Graph<Vertex, Edge<Vertex>> graph = loadGraph(isDirected);
+		Dijekstra
+				.initializeDijekstra(graph, startVertexID, destinationVertexID);
 
 	}
 
 	public static void main(String[] args) {
-		findWaysBetweenTheTwoVertices(3, 0, true);
-		// Graph<Vertex, Edge<Vertex>> graph = GraphLesen.FileToWeightedGraph(
-		// "src/graphenExamples/graphwsu.txt", true);
-		//
-		// Collection<Edge<Vertex>> edgaes = (Collection<Edge<Vertex>>) graph
-		// .getEdges();
-		// for (Edge<Vertex> edge : edgaes) {
-		// System.out.println("v " + edge.getVertexA() + ", u "
-		// + edge.getVertexB() + ", weight " + edge.getWeight());
-		// }
+		// first param is the start vertice
+		// second param is the end vertice
+		// third param if the graph is directed
+		findWaysBetweenTheTwoVertices(2, 5, true);
 
 	}
 

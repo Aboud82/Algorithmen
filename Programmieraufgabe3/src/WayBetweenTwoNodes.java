@@ -4,36 +4,55 @@ import graph.Vertex;
 
 import java.util.ArrayList;
 
-public class ShortestWayBetweenTwoNodes {
+/**
+ * a class to save the properties (attributes) of a way between two
+ * vertices, given in the constructor.
+ * 
+ * @author Aboud Chamoun
+ * @author Martin Fleischer
+ * @author Johannis Dirr
+ * 
+ */
+public class WayBetweenTwoNodes {
 
 	private int startVertexID;
 	private int destinationVertexID;
 	private Graph<Vertex, Edge<Vertex>> graph;
 	private ArrayList<Integer> listOfWayIDS;
 
-	public ShortestWayBetweenTwoNodes(Graph<Vertex, Edge<Vertex>> graph,
+	public WayBetweenTwoNodes(Graph<Vertex, Edge<Vertex>> graph,
 			int startVertexID, int destinationVertexID) {
 		this.startVertexID = startVertexID;
 		this.destinationVertexID = destinationVertexID;
 		this.graph = graph;
 	}
 
+	/**
+	 * to list the vertices on the way between the two vertices given in
+	 * constructor
+	 * 
+	 * @return list of way vertices
+	 */
 	private ArrayList<Integer> idsList() {
 
 		listOfWayIDS = new ArrayList<Integer>();
 		if (startVertexID == destinationVertexID)
 			return listOfWayIDS;
 
+		// check id of type int, to check if the id of current vertice,starting from
+		// destination vertice of constructor , equals the id of start vertice
+		// of constructor
 		int checkNodeID = destinationVertexID;
 		while (checkNodeID != startVertexID) {
-			// listOfWayIDS.add(checkNodeID);
-			Vertex pred = graph.getVertex(checkNodeID);
 
-			if (pred.getPredecessor() == null) {
+			Vertex currentVertex = graph.getVertex(checkNodeID);
+
+			// if there is no way to start vertice
+			if (currentVertex.getPredecessor() == null) {
 
 				return listOfWayIDS;
 			} else {
-				checkNodeID = pred.getPredecessor().getId();
+				checkNodeID = currentVertex.getPredecessor().getId();
 				listOfWayIDS.add(checkNodeID);
 			}
 		}
@@ -41,10 +60,14 @@ public class ShortestWayBetweenTwoNodes {
 
 	}
 
+	
+	/**
+	 * displays the properties of the way between two vertices
+	 */
 	public String toString() {
 
 		idsList();
-		
+
 		if (listOfWayIDS.size() != 0) {
 			StringBuilder wayNodes = new StringBuilder();
 
