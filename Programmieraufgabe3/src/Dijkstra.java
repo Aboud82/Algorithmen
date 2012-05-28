@@ -46,7 +46,7 @@ public class Dijkstra {
 			queue.add(graph.getVertex(i));
 		}
 
-		performeDijekstra(graph, queue, startVertexID, destinationVertexID);
+		performeDijkstra(graph, queue, startVertexID, destinationVertexID);
 
 	}
 
@@ -62,7 +62,7 @@ public class Dijkstra {
 	 * @param destinationVertexID
 	 *            an end vertices id
 	 */
-	static private void performeDijekstra(Graph<Vertex, Edge<Vertex>> graph,
+	static private void performeDijkstra(Graph<Vertex, Edge<Vertex>> graph,
 			ArrayList<Vertex> queue, int startVertexID, int destinationVertexID) {
 
 		while (queue.size() != 0) {
