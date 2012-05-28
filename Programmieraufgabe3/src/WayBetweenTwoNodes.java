@@ -49,6 +49,11 @@ public class WayBetweenTwoNodes {
 
 			Vertex currentVertex = graph.getVertex(checkNodeID);
 
+			if (currentVertex == null) {
+				System.err.println("start or goal doesn't  exist");
+				return null;
+			}
+
 			// if there is no way to start vertice
 			if (currentVertex.getPredecessor() == null) {
 
