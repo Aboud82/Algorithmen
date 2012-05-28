@@ -91,6 +91,7 @@ public class Dijekstra {
 				}
 			}
 		}
+
 		// to call prepareQueue ascending for each neighbour of vertice,given as
 		// parameter
 		for (Integer neighbourWeight : weightVertexMap.keySet()) {
@@ -117,22 +118,31 @@ public class Dijekstra {
 			ArrayList<Vertex> queue, int startVertexID, int destinationVertexID) {
 
 		while (queue.size() != 0) {
-			Vertex firstElementInQueue = queue.get(0);
-			queue.remove(firstElementInQueue);
+
+			int lowest = 0;
+			for (int i = 1; i < queue.size(); i++) {
+				if (queue.get(i).getDistance() < queue.get(lowest)
+						.getDistance()) {
+					lowest = i;
+				}
+			}
+
+			Vertex lowestElementInQueue = queue.get(lowest);
+			queue.remove(lowestElementInQueue);
 
 			Collection<Edge<Vertex>> edgesOfFirstVertex = graph
-					.getIncidentEdges(firstElementInQueue);
+					.getIncidentEdges(lowestElementInQueue);
 			if (edgesOfFirstVertex.size() != 0) {
 				for (Edge<Vertex> edge : edgesOfFirstVertex) {
 					Vertex neighbour = edge.getVertexB();
 					int weightOfEdge = edge.getWeight();
 					if (weightOfEdge < 0) {
 						throw new IllegalArgumentException("one edge of "
-								+ firstElementInQueue.getId() + " is negative");
+								+ lowestElementInQueue.getId() + " is negative");
 
 					}
 
-					relax(firstElementInQueue, neighbour, weightOfEdge);
+					relax(lowestElementInQueue, neighbour, weightOfEdge);
 				}
 			}
 		}

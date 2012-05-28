@@ -81,7 +81,7 @@ public class DijekstraRun {
 		// first param is the start vertice
 		// second param is the end vertice
 		// third param if the graph is directed
-		findWaysBetweenTheTwoVertices(2, 5, true);
+		findWaysBetweenTheTwoVertices(0, 5, true);
 
 	}
 
