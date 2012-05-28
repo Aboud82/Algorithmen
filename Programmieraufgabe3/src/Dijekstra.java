@@ -5,8 +5,6 @@ import graph.Vertex;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.SortedMap;
-import java.util.TreeMap;
 
 /**
  * a class to performe the Dijekstra algorithem
@@ -33,73 +31,24 @@ public class Dijekstra {
 	public static void initializeDijekstra(Graph<Vertex, Edge<Vertex>> graph,
 			int startVertexID, int destinationVertexID) {
 
+		for (int i = 0; i < graph.getVertices().size(); i++) {
+			graph.getVertex(i).setDistance(Integer.MAX_VALUE);
+			graph.getVertex(i).setPredecessor(null);
+		}
+
 		Vertex startVertex = graph.getVertex(startVertexID);
 		startVertex.setDistance(0);
-		startVertex.setPredecessor(startVertex);
+		// startVertex.setPredecessor(startVertex);
 		startVertex.setState(EndStateOfPoint.STARTPOINT);
 
 		ArrayList<Vertex> queue = new ArrayList<Vertex>();
-		queue.add(startVertex);
 
-		prepareQueue(graph, startVertex, queue);
+		for (int i = 0; i < graph.getVertices().size(); i++) {
+			queue.add(graph.getVertex(i));
+		}
+
 		performeDijekstra(graph, queue, startVertexID, destinationVertexID);
 
-	}
-
-	/**
-	 * prepares the queue for Dijekstra, the neighbours of the vertice, given as
-	 * parameter, will be sorted acsending in a SortedMap. the methode will be
-	 * called recursively for each neighbour of vertice.
-	 * 
-	 * @param graph
-	 *            a graph in which Dijekstra will be performed
-	 * @param vertex
-	 *            the vertice, whose neighbours will be taken
-	 * @param queue
-	 *            the queue to help performe Dijekstra
-	 */
-	static private void prepareQueue(Graph<Vertex, Edge<Vertex>> graph,
-			Vertex vertex, ArrayList<Vertex> queue) {
-
-		Collection<Edge<Vertex>> edges = graph.getIncidentEdges(vertex);
-
-		// to sort the neighbouring vertices descending after thier weight,
-		// ArrayList as value in case several edges have the same weight
-		SortedMap<Integer, ArrayList<Vertex>> weightVertexMap = new TreeMap<Integer, ArrayList<Vertex>>();
-
-		// initialize the SortedMap
-		for (Edge<Vertex> egde : edges) {
-			if (!weightVertexMap.containsKey(egde.getWeight())) {
-				weightVertexMap.put(egde.getWeight(), new ArrayList<Vertex>());
-			}
-		}
-
-		// write the vertices' id's in the ArrayList of the certian weight
-		for (Edge<Vertex> egde : edges) {
-			weightVertexMap.get(egde.getWeight()).add(egde.getVertexB());
-		}
-
-		// to add the missing neighbours, ascending after weight,to the queue
-		for (Integer weight : weightVertexMap.keySet()) {
-			ArrayList<Vertex> neighbours = weightVertexMap.get(weight);
-
-			for (Vertex neighbour : neighbours) {
-
-				if (!queue.contains(neighbour)) {
-					queue.add(neighbour);
-
-				}
-			}
-		}
-
-		// to call prepareQueue ascending for each neighbour of vertice,given as
-		// parameter
-		for (Integer neighbourWeight : weightVertexMap.keySet()) {
-			ArrayList<Vertex> neighbours = weightVertexMap.get(neighbourWeight);
-			for (Vertex neighbour : neighbours) {
-				prepareQueue(graph, neighbour, queue);
-			}
-		}
 	}
 
 	/**
@@ -143,6 +92,7 @@ public class Dijekstra {
 					}
 
 					relax(lowestElementInQueue, neighbour, weightOfEdge);
+
 				}
 			}
 		}
