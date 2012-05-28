@@ -7,18 +7,18 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 /**
- * a class to performe the Dijekstra algorithem
+ * a class to performe the Dijkstra algorithem
  * 
  * @author Aboud Chamoun
  * @author Martin Fleischer
  * @author Johannis Dirr
  * 
  */
-public class Dijekstra {
+public class Dijkstra {
 
 	/**
-	 * initializes the Dijekstra algorithem by setting the start vertice,
-	 * setting a queue to help performing Dijekstra
+	 * initializes the Dijkstra algorithem by setting the start vertice, setting
+	 * a queue to help performing Dijekstra
 	 * 
 	 * @param graph
 	 *            the graph in which the Dijekstra algorithem should be
@@ -28,7 +28,7 @@ public class Dijekstra {
 	 * @param destinationVertexID
 	 *            the end vertice
 	 */
-	public static void initializeDijekstra(Graph<Vertex, Edge<Vertex>> graph,
+	public static void initializeDijkstra(Graph<Vertex, Edge<Vertex>> graph,
 			int startVertexID, int destinationVertexID) {
 
 		for (int i = 0; i < graph.getVertices().size(); i++) {
@@ -52,12 +52,12 @@ public class Dijekstra {
 	}
 
 	/**
-	 * performs the Dijekstra algorithem
+	 * performs the Dijkstra algorithem
 	 * 
 	 * @param graph
-	 *            a graph, in which the Dijekstra will be performed
+	 *            a graph, in which the Dijkstra will be performed
 	 * @param queue
-	 *            a queue of vertices to help perform Dijekstra
+	 *            a queue of vertices to help perform Dijkstra
 	 * @param startVertexID
 	 *            a start vertices id
 	 * @param destinationVertexID

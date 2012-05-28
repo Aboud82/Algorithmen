@@ -18,7 +18,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * @author Johannis Dirr
  * 
  */
-public class DijekstraRun {
+public class DijkstraRun {
 
 	/**
 	 * @param <E>
@@ -72,8 +72,8 @@ public class DijekstraRun {
 			int destinationVertexID, boolean isDirected) {
 
 		Graph<Vertex, Edge<Vertex>> graph = loadGraph(isDirected);
-		Dijekstra
-				.initializeDijekstra(graph, startVertexID, destinationVertexID);
+		Dijkstra
+				.initializeDijkstra(graph, startVertexID, destinationVertexID);
 
 	}
 
@@ -81,7 +81,7 @@ public class DijekstraRun {
 		// first param is the start vertice
 		// second param is the end vertice
 		// third param if the graph is directed
-		findWaysBetweenTheTwoVertices(0, 4, true);
+		findWaysBetweenTheTwoVertices(0, 5, true);
 
 	}
 
