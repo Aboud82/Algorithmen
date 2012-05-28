@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 /**
- * a class to performe the Dijkstra algorithem
+ * a class to performe the Dijkstra algorithm
  * 
  * @author Aboud Chamoun
  * @author Martin Fleischer
@@ -17,16 +17,15 @@ import java.util.Collection;
 public class Dijkstra {
 
 	/**
-	 * initializes the Dijkstra algorithem by setting the start vertice, setting
-	 * a queue to help performing Dijekstra
+	 * initializes the Dijkstra algorithm by setting the start vertex, setting a
+	 * queue to help performing Dijkstra
 	 * 
 	 * @param graph
-	 *            the graph in which the Dijekstra algorithem should be
-	 *            performed
+	 *            the graph in which the Dijkstra algorithm should be performed
 	 * @param startVertexID
-	 *            the start vertice
+	 *            the start vertex
 	 * @param destinationVertexID
-	 *            the end vertice
+	 *            the end vertex
 	 */
 	public static void initializeDijkstra(Graph<Vertex, Edge<Vertex>> graph,
 			int startVertexID, int destinationVertexID) {
@@ -52,7 +51,7 @@ public class Dijkstra {
 	}
 
 	/**
-	 * performs the Dijkstra algorithem
+	 * performs the Dijkstra algorithm
 	 * 
 	 * @param graph
 	 *            a graph, in which the Dijkstra will be performed

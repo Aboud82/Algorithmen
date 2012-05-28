@@ -5,8 +5,8 @@ import graph.Vertex;
 import java.util.ArrayList;
 
 /**
- * a class to save the properties (attributes) of a way between two
- * vertices, given in the constructor.
+ * a class to save the properties (attributes) of a way between two vertices,
+ * given in the constructor.
  * 
  * @author Aboud Chamoun
  * @author Martin Fleischer
@@ -36,10 +36,12 @@ public class WayBetweenTwoNodes {
 	private ArrayList<Integer> idsList() {
 
 		listOfWayIDS = new ArrayList<Integer>();
-		if (startVertexID == destinationVertexID)
+		if (startVertexID == destinationVertexID) {
 			return listOfWayIDS;
+		}
 
-		// check id of type int, to check if the id of current vertice,starting from
+		// check id of type int, to check if the id of current vertice,starting
+		// from
 		// destination vertice of constructor , equals the id of start vertice
 		// of constructor
 		int checkNodeID = destinationVertexID;
@@ -60,10 +62,10 @@ public class WayBetweenTwoNodes {
 
 	}
 
-	
 	/**
 	 * displays the properties of the way between two vertices
 	 */
+	@Override
 	public String toString() {
 
 		idsList();
@@ -76,7 +78,7 @@ public class WayBetweenTwoNodes {
 			}
 			return "The shortest way between " + startVertexID + " to "
 					+ destinationVertexID + " is through nodes :  " + wayNodes
-					+ destinationVertexID + " and Distance ist: "
+					+ destinationVertexID + " and Distance is: "
 					+ graph.getVertex(destinationVertexID).getDistance();
 		} else {
 			return "There is no way between " + startVertexID + " to "
