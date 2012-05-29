@@ -76,11 +76,10 @@ public class Dijkstra {
 			}
 
 			Vertex lowestElementInQueue = queue.get(lowest);
+			queue.remove(lowestElementInQueue);
 
 			Collection<Edge<Vertex>> edgesOfFirstVertex = graph
 					.getIncidentEdges(lowestElementInQueue);
-
-			queue.remove(lowestElementInQueue);
 
 			if (edgesOfFirstVertex.size() != 0) {
 				for (Edge<Vertex> edge : edgesOfFirstVertex) {
