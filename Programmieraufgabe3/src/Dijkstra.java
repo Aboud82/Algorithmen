@@ -76,10 +76,12 @@ public class Dijkstra {
 			}
 
 			Vertex lowestElementInQueue = queue.get(lowest);
-			queue.remove(lowestElementInQueue);
 
 			Collection<Edge<Vertex>> edgesOfFirstVertex = graph
 					.getIncidentEdges(lowestElementInQueue);
+
+			queue.remove(lowestElementInQueue);
+
 			if (edgesOfFirstVertex.size() != 0) {
 				for (Edge<Vertex> edge : edgesOfFirstVertex) {
 					Vertex neighbour = edge.getVertexB();
@@ -105,12 +107,12 @@ public class Dijkstra {
 	 * to performe the relaxation between two vertices
 	 * 
 	 * @param firstVertex
-	 *            the first vertice
+	 *            the first vertex
 	 * @param neighbour
-	 *            the neighbouring vertice of the first vertice
+	 *            the neighbouring vertex of the first vertex
 	 * @param weightOfEdge
-	 *            the weight of the edge between the first vertice and the
-	 *            neighbouring vertice
+	 *            the weight of the edge between the first vertex and the
+	 *            neighbouring vertex
 	 */
 	static private void relax(Vertex firstVertex, Vertex neighbour,
 			int weightOfEdge) {
