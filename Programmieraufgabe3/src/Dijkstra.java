@@ -37,7 +37,7 @@ public class Dijkstra {
 
 		Vertex startVertex = graph.getVertex(startVertexID);
 		startVertex.setDistance(0);
-		// startVertex.setPredecessor(startVertex);
+		startVertex.setPredecessor(startVertex);
 		startVertex.setState(EndStateOfPoint.STARTPOINT);
 
 		ArrayList<Vertex> queue = new ArrayList<Vertex>();
