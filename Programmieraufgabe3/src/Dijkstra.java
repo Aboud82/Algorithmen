@@ -77,7 +77,7 @@ public class Dijkstra {
 
 			Vertex lowestElementInQueue = queue.get(lowest);
             
-			//stop the loop id the destinatiopn is reached
+			//stop the loop if the destinatiopn is reached
 			if ( lowestElementInQueue.getId() == destinationVertexID)break;
 			
 			queue.remove(lowestElementInQueue);
