@@ -68,7 +68,7 @@ public class Dijkstra {
 		while (queue.size() != 0) {
 
 			int lowest = 0;
-			for (int i = 1; i < queue.size(); i++) {
+			for (int i = 0; i < queue.size(); i++) {
 				if (queue.get(i).getDistance() < queue.get(lowest)
 						.getDistance()) {
 					lowest = i;
@@ -76,6 +76,10 @@ public class Dijkstra {
 			}
 
 			Vertex lowestElementInQueue = queue.get(lowest);
+            
+			//stop the loop id the destinatiopn is reached
+			if ( lowestElementInQueue.getId() == destinationVertexID)break;
+			
 			queue.remove(lowestElementInQueue);
 
 			Collection<Edge<Vertex>> edgesOfFirstVertex = graph
@@ -94,7 +98,9 @@ public class Dijkstra {
 					relax(lowestElementInQueue, neighbour, weightOfEdge);
 
 				}
+
 			}
+		
 		}
 
 		ResultsDisplay.printResults(graph);
